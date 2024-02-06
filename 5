@@ -1,0 +1,84 @@
+#include <iostream>
+/*
+void program1 () {
+    const int  n = 10;
+    int array [n];
+    for (int i = 0; i < n; i++)
+    {
+        array[i] = rand() % 5;
+    }
+    std::cout << "i= \t";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << "\t" ;
+    }
+    std::cout << "\narr[i]= ";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << array[i] << "\t" ;
+    }
+    std::cout << "\nres:";
+    int k =0;
+    for (int i = 0; i < n; i++)
+    {
+
+        if (array[i] == 0)
+        {
+            std::cout  << i << ", ";
+
+            k++;
+        }
+
+    }
+
+    if (k==0)
+    {
+        std::cout << "elementov ravnyh 0 net  ";
+    }
+    std::cout << "\b\b " ;
+
+}
+*/
+void program5 () {
+    const int n = 10;
+    int array[n];
+    for (int i = 0; i < n; i++) {
+        array[i] = rand() % 100;
+    }
+
+
+
+    for (int i = 0; i < n; i++) {
+        std::cout << array[i] << "\t";
+    }
+    std::cout << "\n";
+    double k = 0;
+    for (int i = 0; i < n; i++)
+    {
+        k += array[i];
+    }
+    double sredn = k/(double)n;
+    std::cout << "sr.arifm=" << sredn << "\n";
+    for (int i=0;i<n;i++)
+    {
+        if (array[i] < sredn)
+        {
+            std::cout << array[i] << " ";
+        }
+    }
+
+
+
+}
+int main()
+{
+    bool answer;
+    program5();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
