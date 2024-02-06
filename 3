@@ -1,0 +1,48 @@
+void program3 () {
+    const int n = 10;
+    int array[n];
+    for (int i = 0; i < n; i++) {
+        array[i] = rand() % 50;
+    }
+
+    int imin = 0;
+    int imax = 0;
+    std::cout << "i= \t";
+    for (int i = 0; i < n; i++) {
+        std::cout << i << "\t";
+    }
+    std::cout << "\narr[i]= ";
+    for (int i = 0; i < n; i++) {
+        std::cout << array[i] << "\t";
+    }
+    std::cout << "\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        if (array[i]< array[imin])
+        {
+            imin = i;
+        }
+        if (array[i]>=array[imax])
+        {
+            imax = i;
+        }
+    }
+
+    std::cout << "min=" << "a[" << imin << "]=" << array[imin] ;
+    std::cout << "\n";
+    std::cout << "max=" << "a[" << imax << "]=" << array[imax] ;
+
+}
+int main()
+{
+    bool answer;
+    program3();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
