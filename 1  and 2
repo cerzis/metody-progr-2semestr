@@ -1,0 +1,96 @@
+#include <iostream>
+
+void program1 () {
+    const int  n = 10;
+    int array [n];
+    for (int i = 0; i < n; i++)
+    {
+        array[i] = rand() % 5;
+    }
+    std::cout << "i= \t";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << "\t" ;
+    }
+    std::cout << "\narr[i]= ";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << array[i] << "\t" ;
+    }
+    std::cout << "\nres:";
+    int k =0;
+    for (int i = 0; i < n; i++)
+    {
+
+        if (array[i] == 0)
+        {
+            std::cout  << i << ", ";
+
+            k++;
+        }
+
+    }
+
+    if (k==0)
+    {
+        std::cout << "elementov ravnyh 0 net  ";
+    }
+    std::cout << "\b\b " ;
+
+}
+void program2 () {
+    const int  n = 10;
+    int array [n];
+    for (int i = 0; i < n; i++)
+    {
+        array[i] = rand() % 50;
+    }
+    std::cout << "i= \t";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << i << "\t" ;
+    }
+    std::cout << "\narr[i]= ";
+    for (int i = 0; i < n; i++)
+    {
+        std::cout  << array[i] << "\t" ;
+    }
+    std::cout<<"\n";
+
+    int k =0;
+    std::cout << "       ";
+    for (int i = 0; i < n; i++)
+    {
+
+        if (array[i] < i )
+        {
+            std::cout  << "\t" << array[i] ;
+            k++;
+        }
+        else if (array[i] > i )
+        {
+            std::cout << "\t";
+        }
+
+    }
+    std::cout<<"\n";
+
+    if (k==0)
+    {
+        std::cout << "elementov net ";
+    }
+
+
+}
+int main()
+{
+    bool answer;
+    program2();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
