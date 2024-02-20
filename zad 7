@@ -1,0 +1,44 @@
+#include <iostream>
+
+void program7 () {
+    const int n = 10;
+    int array[n];
+
+    for (int i = 0; i < n; i++) {
+        array[i] = rand() % 10;
+    }
+    array[5]=array[6]=array[9]=0;
+    for (int i = 0; i < n; i++) {
+        std::cout << array[i] << "\t";
+    }
+    std::cout << "\n";
+    int k=0;
+    for (int i = 0; i < n; i++) {
+        while (array[i] == 0)
+        {
+            for (int j=i;j<n;j++)
+            {
+                
+            }
+        }
+        
+    }
+
+    for (int i=0; i< n-k ; i++){
+        std::cout << array[i] << "\t";
+    }
+
+
+}
+int main()
+{
+    bool answer;
+    program7();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
