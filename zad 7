@@ -1,34 +1,31 @@
 #include <iostream>
 
-void program7 () {
+void program7(){
+    int a, k = 0 ;
     const int n = 10;
-    int array[n];
-
-    for (int i = 0; i < n; i++) {
-        array[i] = rand() % 10;
-    }
-    array[5]=array[6]=array[9]=0;
-    for (int i = 0; i < n; i++) {
-        std::cout << array[i] << "\t";
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 3;
+        std::cout << arr[i] << "\t";
     }
     std::cout << "\n";
-    int k=0;
-    for (int i = 0; i < n; i++) {
-        while (array[i] == 0)
+    for (int i = 0; i < n - k; i++)
+    {
+        if (arr[i] == 0)
         {
-            for (int j=i;j<n;j++)
+            for (int j = i; j < n - k - 1; j++)
             {
-                
+                a = arr[j];    arr[j] = arr[j + 1];
+                arr[j + 1] = a;
             }
+            k++;   i--;
         }
-        
     }
-
-    for (int i=0; i< n-k ; i++){
-        std::cout << array[i] << "\t";
+    for (int i = 0; i < n - k; i++)
+    {
+        std::cout << arr[i] << "\t";
     }
-
-
 }
 int main()
 {
