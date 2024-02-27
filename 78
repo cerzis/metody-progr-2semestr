@@ -1,0 +1,121 @@
+#include <iostream>
+#include <time.h>
+#include <algorithm>
+
+void program7(){
+    int a, k = 0 ;
+    const int n = 10;
+
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = rand() % 3;
+        std::cout << arr[i] << "\t";
+    }
+    std::cout << "\n";
+
+    for (int i = 0; i < n - k; i++)
+    {
+        if (arr[i] == 0)
+        {
+            for (int j = i; j < n - k - 1; j++)
+            {
+                a = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = a;
+            }
+            k++;
+            i--;
+        }
+    }
+
+    for (int i = 0; i < n ; i++)
+    {
+        std::cout << arr[i] << "\t";
+    }
+}
+
+void program8(){
+    int a;
+    const int n = 10000;
+    int array[n];
+    clock_t start;
+    float timing;
+    for (int i = 0; i < n; i++)
+    {
+        array[i] = rand() % 10;
+      //  std::cout << array[i] << "\t";
+    }
+
+    start = clock();
+    for (int i = 0; i < n ; i++) {
+        for (int j = 0; j < n; j++) {
+            if (array[j] > array[j + 1]) {
+                a = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = a;
+            }
+        }
+    }
+
+    timing = (float)(clock() - start) / CLOCKS_PER_SEC;
+    std::cout << "puzyr sort time = " << timing;
+    std::cout << std::endl;
+    system("pause");
+
+    for (int i = 0; i < n; i++)
+    {
+        array[i] = rand() % 10;
+        //  std::cout << array[i] << "\t";
+    }
+    start = clock();
+    for (int i = 0; i < n ; i++) {
+        for (int j = i; j < n; j++) {
+            if (array[j] > array[j]) {
+                a = array[j];
+                array[j] = array[j];
+                array[j] = a;
+            }
+        }
+    }
+    for (int i = 0; i < n ; i++)
+    {
+
+    }
+    timing = (float)(clock() - start) / CLOCKS_PER_SEC;
+    std::cout << "perestanovka sort time = " << timing;
+    std::cout << std::endl;
+    system("pause");
+
+
+    for (int i = 0; i < n; i++)
+    {
+        array[i] = rand() % 10;
+        //  std::cout << array[i] << "\t";
+    }
+    start = clock();
+    std::sort(array,array+n);
+
+    timing = (float)(clock() - start) / CLOCKS_PER_SEC;
+    std::cout << "include sort time = " << timing;
+    std::cout << std::endl;
+    system("pause");
+
+
+
+
+}
+
+
+int main()
+{
+    bool answer;
+    program8();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
