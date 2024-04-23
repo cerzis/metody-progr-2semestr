@@ -1,0 +1,142 @@
+#include <iostream>
+#include <time.h>
+#include <algorithm>
+
+void program9()
+{
+    const int  N = 9;
+    int mas[N];
+    int last;
+    int count;
+    for (int i = 0; i < N; i++)
+    {
+        mas[i] = rand() % 10;
+
+    }
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << mas[i] << "\t";
+    }
+    std::sort(mas, mas + N);
+    std::cout << "\n";
+
+    int i = 0;
+    while (i < N) {
+        last = i;
+        count = 1;
+        for (int j = i + 1; j < N; j++) {
+            if (mas[i] == mas[j])
+            {
+                last = j;
+                count++;
+            }
+        }
+
+        std::cout << "number " << mas[i] << " repeats " << count << " times \n";
+        i = last + 1;
+    }
+}
+
+
+void program10()
+{
+    const int  N = 10;
+    int mas[N];
+    int last;
+    int count;
+   
+    for (int i = 0; i < N; i++)
+    {
+        mas[i] = rand() % 9;
+
+        for (int j = 0 ; j < i; j++) {
+            if (mas[i] == mas[j])
+            {
+                i--;
+                break;
+
+            }
+        }
+    }
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << mas[i] << "\t";
+    }
+
+        
+    
+}
+void program11()
+{
+    const int  N = 10;
+    int mas[N];
+    int last;
+    int count;
+
+    for (int i = 0; i < N; i++)
+    {
+        mas[i] = rand() % 10;
+
+    }
+    for (int i = 0; i < N; i++)
+    {
+        std::cout << mas[i] << "\t";
+    }
+    int min = mas[0];
+    int max = mas[0];
+
+    for (int i = 0; i < N; i++)
+    {
+        if (mas[i] > max)
+        {
+            max = mas[i];
+        }
+        if (mas[i] < min)
+        {
+            min = mas[i];
+        }
+    }
+    std::cout << "\nmax=" << max; 
+    std::cout << "\nmin=" << min;
+    for (int i = min; i < max; i++)
+    {
+        bool found = true;
+      
+        for (int j = 0; j < N; j++)
+        {
+            if (mas[j] == i)
+            {
+                found = false;
+                    break;
+            }
+            
+        }
+        if (found)
+        {
+            std::cout << "\nnot found:" << i;
+        }
+
+        
+    }
+   
+    
+
+
+
+}
+
+
+
+
+int main()
+{
+    bool answer;
+    program10();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
