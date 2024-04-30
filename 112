@@ -1,0 +1,72 @@
+#include <iostream>
+#include <time.h>
+#include <algorithm>
+
+void program12()
+{
+    const int  n = 10;
+    const int  m = 5;
+    int mas[n]{ 10,9,8,8,5,4,3,3,2,11 };
+    int mass[m]{ 14,8,7,6,9 };
+    const int x = n + m;
+    int mm[x];
+    
+
+    std::sort(mas, mas + n);
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << mas[i] << "\t";
+    }
+    std::cout << "\n";
+   
+    for (int i = 0; i < m-1; i++) {
+
+        for (int j = i + 1; j < m; j++)
+        {
+            if (mass[i] > mass[j])
+            {
+                std::swap(mass[j], mass[i]);
+            }
+        }
+    }
+    for (int i = 0; i < m; i++)
+    {
+        std::cout << mass[i] << "\t";
+    }
+    std::cout << "\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        mm[i] = mas[i];
+    }
+    for (int i = n; i < x; i++)
+    {
+        mm[i] = mass[i - n];
+    }
+    for (int i = 0; i < x; i++)
+    {
+        std::cout << mm[i] << "\t";
+    }
+    for (int i = 0; i < x; i++) {
+        for (int j = i + 1; j < x; j++)
+        {
+
+        }
+    }
+
+
+
+}
+int main()
+{
+    bool answer;
+    program12();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
+}
+   
