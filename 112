@@ -1,72 +1,132 @@
+// ConsoleApplication2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
 #include <iostream>
-#include <time.h>
+#include <vector>
 #include <algorithm>
 
 void program12()
 {
-    const int  n = 10;
-    const int  m = 5;
-    int mas[n]{ 10,9,8,8,5,4,3,3,2,11 };
-    int mass[m]{ 14,8,7,6,9 };
-    const int x = n + m;
-    int mm[x];
-    
+    const int n = 5;
+    bool b = true;
 
-    std::sort(mas, mas + n);
-    for (int i = 0; i < n; i++)
-    {
-        std::cout << mas[i] << "\t";
-    }
-    std::cout << "\n";
-   
-    for (int i = 0; i < m-1; i++) {
+    int arr1[n] = { 1,8,7,2,5 };
+    int arr2[n] = { 6,4,8,3,5 };
 
-        for (int j = i + 1; j < m; j++)
+    std::vector<int> arr12 = std::vector<int>();
+    std::sort(arr1, arr1 + n);
+    for (int i = 0; i < n - 1; i++) {
+
+        for (int j = i + 1; j < n; j++)
         {
-            if (mass[i] > mass[j])
+            if (arr2[i] < arr2[j])
             {
-                std::swap(mass[j], mass[i]);
+                std::swap(arr2[j], arr2[i]);
             }
         }
     }
-    for (int i = 0; i < m; i++)
-    {
-        std::cout << mass[i] << "\t";
-    }
-    std::cout << "\n";
-
-    for (int i = 0; i < n; i++)
-    {
-        mm[i] = mas[i];
-    }
-    for (int i = n; i < x; i++)
-    {
-        mm[i] = mass[i - n];
-    }
-    for (int i = 0; i < x; i++)
-    {
-        std::cout << mm[i] << "\t";
-    }
-    for (int i = 0; i < x; i++) {
-        for (int j = i + 1; j < x; j++)
+        for (int i = 0; i < n; i++)
         {
-
+            std::cout << arr1[i] << "\t";
         }
+        std::cout << "\n";
+        
+
+        for (int i = 0; i < n; i++)
+        {
+            std::cout << arr2[i] << "\t";
+        }
+        copy(std::begin(arr1), std::end(arr1), std::back_inserter(arr12));
+        copy(std::begin(arr2), std::end(arr2), std::back_inserter(arr12));
+        std::sort(std::begin(arr12), std::end(arr12), std::greater<>());
+        std::vector<int> arr3 = std::vector<int>();
+        for (int i = 0; i < arr12.size(); i++)
+        {
+            if (std::find(arr3.begin(), arr3.end(), arr12[i]) != arr3.end())
+            {
+                b = true;
+            }
+            else
+            {               
+               b = false;
+            }
+
+            if (!b)
+            {
+                arr3.push_back(arr12[i]);
+            }   
+       }
+        std::cout << "\n";
+        for (int i = 0; i < arr3.size(); i++)
+        {
+            std::cout << arr3[i] << "\t";
+        }
+
+
+
     }
 
+        int main()
+        {
+            bool answer;
+            program12();
+            std::cout << "\nOne more? (1 - yes, 0 - no): ";
+            std::cin >> answer;
+            if (answer)
+            {
+                main();
+            }
+            return 0;
+        }
 
 
-}
-int main()
-{
-    bool answer;
-    program12();
-    std::cout << "\nOne more? (1 - yes, 0 - no): ";
-    std::cin >> answer;
-    if (answer)
-    {
-        main();
-    }
-    return 0;
-}
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
