@@ -1,0 +1,74 @@
+#include <iostream>
+#include <limits>
+#include <vector>
+
+void Matrix()
+{
+	const int n = 4;
+	std::cout << "\nThe Matrix:\n";
+	int matrix[n][n] = {
+		{ 3, 5, 8, 4 },
+		{ 5, 6, 2, 8 },
+		{ 8, 2, 6, 5 },
+		{ 4, 8, 5, 3 }
+	};
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			std::cout << matrix[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
+	bool SymmetricGeneral = true;
+	bool SymmetricSide = true;
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; j < n; ++j)
+		{
+			if (matrix[i][j] != matrix[j][i])
+			{
+				SymmetricGeneral = false;
+			}
+		}
+	}
+	for (int i = 0; i < n; ++i)
+	{
+		for (int j = 0; j < n; ++j)
+		{
+			if (matrix[i][j] != matrix[4 - 1 - j][4 - 1 - i])
+			{
+				SymmetricSide = false;
+			}
+		}
+	}
+	if (SymmetricGeneral == true && SymmetricSide == true)
+	{
+		std::cout << "\nThe Matrix Is Symmetric of General and Side Diagonal!";
+	}
+	else if (SymmetricGeneral == true)
+	{
+		std::cout << "\nThe Matrix Is Symmetric of General Diagonal!";
+	}
+	else if (SymmetricSide == true)
+	{
+		std::cout << "\nThe Matrix Is Symmetric of Side Diagonal!";
+	}
+	else
+	{
+		std::cout << "\nThe Matrix Is NOT Symmetric!";
+	}
+}
+int main()
+{
+	bool mass;
+	do
+	{
+		Matrix();
+		std::cout << "\n";
+		std::cout << "\nDo you want to repeat ?(yes - 1 , no - 0): ";
+		std::cin >> mass;
+		std::cout << "\n";
+	} while (mass);
+	return 0;
+}
