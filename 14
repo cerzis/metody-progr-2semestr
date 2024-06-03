@@ -3,8 +3,9 @@
 #include <algorithm>
 #include <ctime>
 
-void Array()
+void program14()
 {
+	int L = 0, El = 0, I = 0;
 	srand(time(0));
 	std::vector<int> array(1000);
 	for (int i = 0; i < 1000; ++i)
@@ -12,50 +13,48 @@ void Array()
 		array[i] = rand() % 6 + 1;
 		std::cout << array[i] << " ";
 	}
-	int MaxLength = 0, MaxElement = 0, MaxIndex = 0;
-	std::vector<std::pair<std::pair<int, int>, int>> chains;
+	std::vector<std::pair<std::pair<int, int>, int>> arrs;
 	for (int i = 0; i < 1000; ++i)
 	{
-		int count = 1;
-		while (i + count < 1000 && array[i] == array[i + count])
-		{
-			++count;
+		int el = 1;
+		while (i + el < 1000 && array[i] == array[i + el]){
+			el++;
 		}
-		if (count > MaxLength)
+		if (el > L)
 		{
-			MaxLength = count;
-			MaxElement = array[i];
-			MaxIndex = i;
-			chains.clear();
-			chains.emplace_back(std::make_pair(MaxElement, MaxLength), MaxIndex);
+			L = el;
+			El = array[i];
+			I = i;
+			arrs.clear();
+			arrs.emplace_back(std::make_pair(El, L), I);
 		}
-		else if (count == MaxLength)
+		else if (el == L)
 		{
-			chains.emplace_back(std::make_pair(array[i], count), i);
+			arrs.emplace_back(std::make_pair(array[i], el), i);
 		}
-		i += count - 1;
+		i = i + (el - 1);
 	}
 	std::cout << "\n";
-	std::cout << "\nThe Value of the Element with the Longest Chain - " << MaxElement << " The Length of his Chain - " << MaxLength << " Start Index: " << MaxIndex << "\n";
-	std::cout << "All Chains corresponding to the conditions:\n";
-	for (const auto& chain : chains)
+	std::cout << "\nElement with the longest Chain - " << El << "  Length of chain - " << L << " Start index: " << I << "\n";
+	std::cout << "Other chains:\n";
+	for (const auto chain : arrs)
 	{
 		std::cout << "Element: " << chain.first.first << ", Long: " << chain.first.second << ", Start Index: " << chain.second << '\n';
 	}
 }
 int main()
 {
-	bool mass;
-	do
+	bool answer;
+	program14();
+	std::cout << "\nOne more? (1 - yes, 0 - no): ";
+	std::cin >> answer;
+	if (answer)
 	{
-		Array();
-		std::cout << "\n";
-		std::cout << "\nDo you want to repeat ?(yes - 1 , no - 0): ";
-		std::cin >> mass;
-		std::cout << "\n";
-	} while (mass);
+		main();
+	}
 	return 0;
 }
+
 
 
 
