@@ -1,43 +1,42 @@
 #include <iostream>
-#include <limits>
 #include <vector>
 
-void ArrayDay()
+void CalculateDayOfWeek()
 {
-	std::vector<int> DaysInMonth { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	std::vector<std::string> DaysOfWeek{ "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturduay", "Sunday" };
-	int d, m;
-	std::cout << "Enter Day: ";
-	std::cin >> d;
-	std::cout << "Enter Month: ";
-	std::cin >> m;
-	if (m < 1 || m > 12)
-	{
-		std::cout << "You Enter The Wrong Data! Please try again.";
-		return;
-	}
-	if (d < 1 || d > DaysInMonth[m - 1])
-	{
-		std::cout << "You Enter The Wrong Data! Please try again.";
-		return;
-	}
-	int AllDays = d;
-	for (int i = 0; i < m - 1; ++i)
-	{
-		AllDays += DaysInMonth[i];
-	}
-	std::cout << "Day of week - " << DaysOfWeek[(AllDays - 1) % 7];
+    std::vector<int> DaysInMonth{ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    std::vector<std::string> DaysOfWeek{ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+    int day, month;
+    std::cout << "Enter day: ";
+    std::cin >> day;
+    std::cout << "Enter month: ";
+    std::cin >> month;
+    if (day < 1 || day > DaysInMonth[month - 1])
+    {
+        std::cout << "Invalid day! Please try again.";
+        return;
+    }
+    if (month < 1 || month > 12)
+    {
+        std::cout << "Invalid month! Please try again.";
+        return;
+    }
+    int totalDays = day;
+    for (int i = 0; i < month - 1; i++)
+    {
+        totalDays += DaysInMonth[i];
+    }
+    std::cout << "Day of the week: " << DaysOfWeek[(totalDays - 1) % 7];
 }
+
 int main()
 {
-	bool mass;
-	do
-	{
-		ArrayDay();
-		std::cout << "\n";
-		std::cout << "\nDo you want to repeat ?(yes - 1 , no - 0): ";
-		std::cin >> mass;
-		std::cout << "\n";
-	} while (mass);
-	return 0;
+    bool answer;
+    CalculateDayOfWeek();
+    std::cout << "\nOne more? (1 - yes, 0 - no): ";
+    std::cin >> answer;
+    if (answer)
+    {
+        main();
+    }
+    return 0;
 }
