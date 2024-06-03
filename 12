@@ -1,65 +1,48 @@
+#include <random>
 #include <iostream>
-#include <limits>
-#include <vector>
-#include <algorithm>
 #include <ctime>
-#include <set>
-
-void vector()
+#include <algorithm>
+#include <string>
+bool contains(std::vector<int> vector, int x) {
+    if (std::find(vector.begin(), vector.end(), x) != vector.end()) {
+        return true;
+    }
+    return false;
+}
+void program19()
 {
-	int n;
-	std::cout << "Enter the size Originals Arrays: ";
-	std::cin >> n;
-	std::vector<int> array1(n), array2(n);
-	std::cout << "First Original Array:   ";
-	for (int i = 0; i < n; ++i)
-	{
-		array1[i] = rand() % 25;
-		std::cout << array1[i] << "   ";
-	}
-	std::cout << "\n";
-	std::cout << "Second Original Array:   ";
-	for (int i = 0; i < n; ++i)
-	{
-		array2[i] = rand() % 25;
-		std::cout << array2[i] << "   ";
-	}
-	std::sort(array1.begin(), array1.end());
-	std::sort(array2.rbegin(), array2.rend());
-	std::cout << "\n";
-	std::cout << "\n";
-	std::cout << "First Sorted Array:   ";
-	for (int i = 0; i < n; ++i)
-	{
-		std::cout << array1[i] << "   ";
-	}
-	std::cout << "\n";
-	std::cout << "Second Sorted Array:   ";
-	for (int i = 0; i < n; ++i)
-	{
-		std::cout << array2[i] << "   ";
-	}
-	std::set<int> DoubleSet(array1.begin(), array1.end());
-	DoubleSet.insert(array2.begin(), array2.end());
-	std::vector<int> array3(DoubleSet.rbegin(), DoubleSet.rend());
-	std::cout << "\nThe Therd Array, which is created from the first two array:   ";
-	for (int i = 0; i < array3.size(); ++i)
-	{
-		std::cout << array3[i] << "   ";
-	}
-	std::cout << "\n";
+    const int n = 5;
+
+    int arr1[n] = { 3, 6, 6, 7, 10 };
+    int arr2[n] = { 8, 6, 6, 7, 6 };
+
+    std::vector<int> resultArr2 = std::vector<int>();
+    std::vector<int> resultArr = std::vector<int>();
+    copy(std::begin(arr1), std::end(arr1), std::back_inserter(resultArr));
+    copy(std::begin(arr2), std::end(arr2), std::back_inserter(resultArr));
+
+    std::sort(std::begin(resultArr), std::end(resultArr), std::greater<>());
+
+    for (int i = 0; i < resultArr.size(); ++i) {
+        if (!contains(resultArr2, resultArr[i])) {
+            resultArr2.push_back(resultArr[i]);
+        }
+        std::cout << resultArr[i] << " ";
+    }
+
+    std::cout << "\nArray:\n";
+    for (int element : resultArr2)
+        std::cout << element << " ";
 }
 int main()
 {
-	srand(time(0));
-	bool mass;
-	do
+	bool answer;
+	program19();
+	std::cout << "\nOne more? (1 - yes, 0 - no): ";
+	std::cin >> answer;
+	if (answer)
 	{
-		vector();
-		std::cout << "\n";
-		std::cout << "\nDo you want to repeat ?(yes - 1 , no - 0): ";
-		std::cin >> mass;
-		std::cout << "\n";
-	} while (mass);
-	return 0;	
+		main();
+	}
+	return 0;
 }
