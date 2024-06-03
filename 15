@@ -2,10 +2,10 @@
 #include <limits>
 #include <vector>
 
-void Matrix()
+void program15()
 {
-	std::cout << "Enter the Size of The Matrix: ";
 	int n;
+	std::cout << "Enter the Size of The Matrix: ";
 	std::cin >> n;
 	std::vector<std::vector<int>> matrix(n, std::vector<int>(n));
 	for (int i = 1; i <= n; ++i)
@@ -20,7 +20,7 @@ void Matrix()
 			{
 				matrix[i - 1][j - 1] = j;
 			}
-			else 
+			else
 			{
 				matrix[i - 1][j - 1] = n - n;
 			}
@@ -38,15 +38,14 @@ void Matrix()
 	}
 }
 int main()
-{
-	bool mass;
-	do
 	{
-		Matrix();
-		std::cout << "\n";
-		std::cout << "\nDo you want to repeat ?(yes - 1 , no - 0): ";
-		std::cin >> mass;
-		std::cout << "\n";
-	} while (mass);
-	return 0;
-}
+		bool answer;
+		program15();
+		std::cout << "\nOne more? (1 - yes, 0 - no): ";
+		std::cin >> answer;
+		if (answer)
+		{
+			main();
+		}
+		return 0;
+	}
