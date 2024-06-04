@@ -22,7 +22,7 @@ void program15()
 			}
 			else
 			{
-				matrix[i - 1][j - 1] = n - n;
+				matrix[i - 1][j - 1] = 0;
 			}
 		}
 	}
